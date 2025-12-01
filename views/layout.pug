@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title || '101 Movies'
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        header
+            nav
+                h1 
+                    a(href="/") 101 Movies
+                ul
+                    li
+                        a(href="/") Home
+                    li
+                        a(href="/movies") All Movies
+                    li
+                        a(href="/movies/add") Add Movie
+                    li
+                        a(href="/auth/login") Login
+                    li
+                        a(href="/auth/register") Register
+
+        main
+            block content
+
+        footer
+            p &copy; 2025 101 Movies. All rights reserved.
+
+        script(src="/js/main.js")

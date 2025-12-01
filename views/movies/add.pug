@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    .container
+        h1 Add New Movie
+        
+        if errors
+            .error-messages
+                each error in errors
+                    .error= error.msg
+
+        form(method="POST" action="/movies/add").form-container
+            .form-group
+                label(for="name") Movie Title:
+                input(type="text" id="name" name="name" required value=formData ? formData.name : '')
+            
+            .form-group
+                label(for="description") Description:
+                textarea(id="description" name="description" rows="4" required)= formData ? formData.description : ''
+            
+            .form-group
+                label(for="year") Release Year:
+                input(type="number" id="year" name="year" min="1888" max="2025" required value=formData ? formData.year : '')
+            
+            .form-group
+                label(for="genres") Genres (comma-separated):
+                input(type="text" id="genres" name="genres" placeholder="Action, Drama, Comedy" value=formData ? formData.genres : '')
+            
+            .form-group
+                label(for="rating") Rating (0-10):
+                input(type="number" id="rating" name="rating" min="0" max="10" step="0.1" value=formData ? formData.rating : '0')
+            
+            .form-actions
+                button.button(type="submit") Add Movie
+                a.button(href="/movies") Cancel

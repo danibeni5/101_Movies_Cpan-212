@@ -1,0 +1,29 @@
+extends ../layout
+   
+
+
+
+
+   
+block content
+    .container
+        h1 All Movies
+        .actions
+            a.button(href="/movies/add") Add New Movie
+        .movies-list
+            if movies && movies.length > 0
+                each movie in movies
+                    .movie-item
+                        h3
+                            a(href=`/movies/${movie._id}`)= movie.name
+                        .movie-meta
+                            span.year Year: #{movie.year}
+                            span.genres Genres: #{movie.genres.join(', ')}
+                            span.rating Rating: #{movie.rating}/10
+                            span.creator By: #{movie.createdBy.username}
+                            span.date Added: #{movie.createdAt.toDateString()}
+            else
+                .placeholder
+                    h3 No movies yet
+                    p Movies will appear here once added
+                    a.button(href="/movies/add") Add the first movie!
